@@ -8,4 +8,4 @@ def factorial(numero: int):
         return numero * factorial(anterior)
     
 
-print(factorial(500))
+print(factorial(5))

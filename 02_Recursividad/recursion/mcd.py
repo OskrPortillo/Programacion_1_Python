@@ -7,5 +7,5 @@ def mcd(numero_a: int, numero_b: int) -> int:
         return mcd(numero_b, modulo_a_b)
 
 
-minimo_comun_divisor = mcd(5, 10)
-print(minimo_comun_divisor)
+maximo_comun_divisor = mcd(5, 10)
+print(maximo_comun_divisor)

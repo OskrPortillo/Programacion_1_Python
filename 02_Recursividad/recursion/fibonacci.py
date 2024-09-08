@@ -7,4 +7,4 @@ def fibonacci(numero: int) -> int:
         penultimo = numero - 2
         return fibonacci(ultimo) + fibonacci(penultimo)
 
-print(fibonacci(17))
+print(fibonacci(5))
