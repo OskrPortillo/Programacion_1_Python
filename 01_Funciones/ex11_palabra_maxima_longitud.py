@@ -2,7 +2,7 @@
 # calculará cual de ellas tiene mayor cantidad de letras y tendra que imprimirla en consola
 # junto con la cantidad de letras que posee
 
-import Contar_caracteres_10
+import ex10_contar_caracteres
 
 def validar_palabra()-> str:
     palabra = None
@@ -23,7 +23,7 @@ def palabra_mas_larga() -> None:
     for _ in range(3):
         string = validar_palabra()
 
-        cantidad_caracter = Contar_caracteres_10.contar_caracteres(string)
+        cantidad_caracter = ex10_contar_caracteres.contar_caracteres(string)
         print(cantidad_caracter)
 
         if not palabra_mayor or cantidad_caracter > contador_mayor:

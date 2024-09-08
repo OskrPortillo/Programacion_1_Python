@@ -1,5 +1,5 @@
 # 7 - Crear una función con parámetros que dado un número, retorne si el número es primo o no.
-import Multiplo_06
+import ex06_multiplo
 
 def validar_si_es_primo(numero_a_verificar: int) -> bool:
     """
@@ -18,7 +18,7 @@ def validar_si_es_primo(numero_a_verificar: int) -> bool:
 
     while posible_divisor < numero_a_verificar:
 
-        if Multiplo_06.es_multiplo(numero_a_verificar, posible_divisor):
+        if ex06_multiplo.es_multiplo(numero_a_verificar, posible_divisor):
             contador_divisores += 1
             break
 
