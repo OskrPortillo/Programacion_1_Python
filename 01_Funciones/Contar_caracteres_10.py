@@ -1,7 +1,7 @@
 # 10 - Crear una funcion con parametros, que dada una palabra, cuente la cantidad total de letras
 # y retorne dicha cantidad como un entero.
 
-def contar_letras_total(palabra:str) -> int:
+def contar_caracteres(palabra:str) -> int:
     """
     Cuenta la cantidad total de ltras que tiene la palabra dada.
 

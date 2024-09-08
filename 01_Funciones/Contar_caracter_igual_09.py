@@ -13,12 +13,12 @@ def contar_letras_coincidentes(palabra:str, letra:str) -> int:
     Returns:
         int: La cantidad de veces que aparece la letra en la palabra
     """
-    cantidad_letra = 0
+    contador_letra = 0
     for caracter in palabra:
         if caracter == letra:
-            cantidad_letra += 1
+            contador_letra += 1
     
-    return cantidad_letra
+    return contador_letra
 
 
 '''

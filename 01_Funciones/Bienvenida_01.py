@@ -5,5 +5,3 @@ def bienvenida() -> None:
     Imprime un mensaje de bienvenida.
     """
     print('Bienvenidos a la UTN')
-
-bienvenida()

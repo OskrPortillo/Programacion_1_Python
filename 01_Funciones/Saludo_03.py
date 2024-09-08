@@ -8,7 +8,3 @@ def saludar(nombre: str) -> None:
     """
     
     print(f"Hola {nombre}") 
-
-
-nombre_a_saludar = "Oscar"
-saludar(nombre_a_saludar)

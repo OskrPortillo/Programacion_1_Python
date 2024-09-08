@@ -11,10 +11,6 @@ def obtener_año_actual() -> int:
     año_actual = "2024"
     return int(año_actual)
 
-
-año = obtener_año_actual()
-print(año)
-
 # Usando el modulo datetime 
 '''
 import datetime
