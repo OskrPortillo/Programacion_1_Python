@@ -79,7 +79,7 @@ def mostrar_datos_heroes(i: int, lista_nombres, lista_identidad: list, lista_gen
             case "nombre":
                 mensaje += f"Nombre: {lista_nombres[i]:<16} | "
             case "identidad":
-                mensaje += f"Identidad: {lista_identidad[i]:<24} | "
+                mensaje += f"Identidad: {lista_identidad[i]:<32} | "
             case "genero":
                 mensaje += f"Genero: {lista_generos[i]:<12} | "
             case "poder":
@@ -162,7 +162,6 @@ def selection_short(lista_nombres: list[str], lista_identidades: list[str],lista
             if orden_ascendente:
                 if lista_poder[sub_indice] < lista_poder[indice_minimo_o_maximo]:
                     indice_minimo_o_maximo = sub_indice
-            
             else:
                 if lista_poder[sub_indice] > lista_poder[indice_minimo_o_maximo]:
                     indice_minimo_o_maximo = sub_indice
@@ -185,21 +184,49 @@ def selection_short(lista_nombres: list[str], lista_identidades: list[str],lista
 
 
 def quick_sort(lista_nombres: list[str], lista_identidades: list[str],lista_generos: list [str], \
-                lista_poder: list[int], lista_alturas: list[float]) -> None:
+                lista_poder: list[int], lista_alturas: list[float], modo: str) -> None:
     
     if len(lista_poder) < 2:
-        return lista_poder
+        return lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas
     
-    pivot = lista_poder.pop()
-    numeros_menores = []
-    numeros_mayores = []
+    pivot_poder = lista_poder.pop()
+    pivot_nombre = lista_nombres.pop()
+    pivot_identidad = lista_identidades.pop()
+    pivot_genero = lista_generos.pop()
+    pivot_altura = lista_alturas.pop()
+    
+    poder_menores, nombre_menores, identidad_menores, genero_menores, altura_menores = [], [], [], [], []
+    poder_mayores, nombre_mayores, identidad_mayores, genero_mayores, altura_mayores = [], [], [], [], []
 
-    for numero in lista_poder:
-        if numero <= pivot:
-            numeros_menores.append(numero)
+    for i in range(len(lista_poder)):
+        if lista_poder[i] <= pivot_poder:
+            poder_menores.append(lista_poder[i])
+            nombre_menores.append(lista_nombres[i])
+            identidad_menores.append(lista_identidades[i])
+            genero_menores.append(lista_generos[i])
+            altura_menores.append(lista_alturas[i])
         else:
-            numeros_mayores.append(numero)
+            poder_mayores.append(lista_poder[i])
+            nombre_mayores.append(lista_nombres[i])
+            identidad_mayores.append(lista_identidades[i])
+            genero_mayores.append(lista_generos[i])
+            altura_mayores.append(lista_alturas[i])
 
-    return quick_sort(numeros_menores) + pivot + quick_sort (numeros_mayores)
+    if modo == "ASC":
+        izquierda_poder, derecha_poder = poder_menores, poder_mayores
+        izquierda_nombre, derecha_nombre = nombre_menores, nombre_mayores
+        izquierda_identidad, derecha_identidad = identidad_menores, identidad_mayores
+        izquierda_genero, derecha_genero = genero_menores, genero_mayores
+        izquierda_altura, derecha_altura = altura_menores, altura_mayores
+    else:  # Para "DESC"
+        izquierda_poder, derecha_poder = poder_mayores, poder_menores
+        izquierda_nombre, derecha_nombre = nombre_mayores, nombre_menores
+        izquierda_identidad, derecha_identidad = identidad_mayores, identidad_menores
+        izquierda_genero, derecha_genero = genero_mayores, genero_menores
+        izquierda_altura, derecha_altura = altura_mayores, altura_menores
+
+
+    return quick_sort(izquierda_nombre, izquierda_identidad, izquierda_genero, izquierda_poder, izquierda_altura, modo) \
+          + pivot_poder + quick_sort (derecha_nombre, derecha_identidad, derecha_genero, derecha_poder, derecha_altura, modo)
 
 

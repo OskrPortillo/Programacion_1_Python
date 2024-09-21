@@ -45,8 +45,7 @@ def utn_heroes_app(lista_nombres, lista_identidades, lista_generos, lista_poder,
             case 11:
                 utn_ordenar_altura_descendente(lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas)
             case 12:
-                #utn_ordenar_poder_a_eleccion(lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas)
-                pass
+                utn_ordenar_poder_a_eleccion(lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas)
             case 13: # Salir del programa
                 break
             

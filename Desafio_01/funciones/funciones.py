@@ -170,20 +170,23 @@ def utn_ordenar_poder_ascendente(lista_nombres, lista_identidades, lista_generos
     selection_short(lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas, True)
     
     for indice in range(len(lista_poder)):
-        mostrar_datos_heroes(indice, lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas)
+        mostrar_datos_heroes(indice, lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas, 
+                             ["nombre", "identidad", "genero", "poder", "altura"])
 
 def utn_ordenar_altura_descendente(lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas) ->None:
     
     bubble_sort(lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas, False)
     
     for indice in range(len(lista_alturas)):
-        mostrar_datos_heroes(indice, lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas)
+        mostrar_datos_heroes(indice, lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas, 
+                             ["nombre", "identidad", "genero", "poder", "altura"])
 
 def utn_ordenar_poder_a_eleccion(lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas) ->None:
-
-    quick_sort(lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas)
+    ordenamiento = "ASC"
+    quick_sort(lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas, ordenamiento)
 
     for indice in range(len(lista_poder)):
-        mostrar_datos_heroes(indice, lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas)
+        mostrar_datos_heroes(indice, lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas, 
+                            ["nombre", "identidad", "genero", "poder", "altura"])
     
 

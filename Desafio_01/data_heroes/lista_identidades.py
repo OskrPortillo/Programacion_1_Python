@@ -15,7 +15,7 @@
 
 lista_identidades_heroes = [
     "Delta Uno",
-    "Cyberdyne Systems Series 800 Terminator Model 101",
+    "Series 800 Terminator Model 101",
     "Karen Beecher",
     "Benjamin Kirby Tennyson",
     "Kara Zor-L",
