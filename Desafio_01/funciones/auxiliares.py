@@ -47,14 +47,50 @@ def obtener_poder_promedio(lista_poder: list) -> float:
     Returns:
         float: El promedio de los valores de la lista.
     """
-
-
     suma_poder = 0
     for indice in range(len(lista_poder)):
         suma_poder += lista_poder[indice]
 
     promedio = suma_poder / len(lista_poder)
     return promedio
+
+
+def mostrar_datos_heroes(i: int, lista_nombres, lista_identidad: list, lista_generos: list, 
+                         lista_poderes: list, lista_alturas: list, dato_a_imprimir: list[str])-> None:
+    """
+    Funcion que muestra la información de un héroe según el índice 
+    y que dato especifico quiero que muestre.
+
+    Args:
+        i (int): El índice del héroe dentro de las listas.
+        nombres (list): lista de strings
+        identidad (list): lista de strings
+        generos (list): lista de strings
+        poder (list): lista de enteros
+        alturas (list): lista de floats
+        dato_a_imprimir (list[str]): lista de los dato a imprimir. Puede incluir "nombres", "identidades",
+                                    "generos", "poderes", "alturas".
+    """
+    
+    mensaje = ""
+
+    for dato in dato_a_imprimir:
+        match dato:
+            case "nombre":
+                mensaje += f"Nombre: {lista_nombres[i]:<16} | "
+            case "identidad":
+                mensaje += f"Identidad: {lista_identidad[i]:<24} | "
+            case "genero":
+                mensaje += f"Genero: {lista_generos[i]:<12} | "
+            case "poder":
+                mensaje += f"Poder: {lista_poderes[i]:<12} | "
+            case "altura":
+                mensaje += f"Altura: {lista_alturas[i]:<12} | "
+            case _:
+                print(f"Dato '{dato}' no es válida.")
+    
+    print(mensaje)
+
 
 def obtener_maximo(lista_numeros: list) -> float:
     """
@@ -75,13 +111,6 @@ def obtener_maximo(lista_numeros: list) -> float:
         
     return float(maximo)
 
-def  imprimir_datos_heroes(indice: int, lista_nombres: list, lista_identidades: list, 
-                           lista_generos: list, lista_poderes: list, lista_alturas: list)-> str:
-    
-    mensaje = f"Nombre: {lista_nombres[indice]:<16} | Identidad: {lista_identidades[indice]:<22} " \
-              f"| Genero: {lista_generos[indice]:<12} | Altura: {lista_alturas[indice]:<12} " \
-              f"| Poder: {lista_poderes[indice]:<12} |"
-    return mensaje
 
 def bubble_sort(lista_nombres: list[str], lista_identidades: list[str],lista_generos: list [str], \
                 lista_poder: list[int], lista_alturas: list[float], orden_ascendente :bool) ->None:

@@ -13,12 +13,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# from .funciones import (
-#     
-#     
-#    ,
-#     utn_mostrar_heroes_mas_debiles
-# )
 
 from .funciones import (
     utn_mostrar_nombres_heroes,
@@ -27,6 +21,7 @@ from .funciones import (
     utn_mostrar_heroes_mas_fuertes,
     utn_filtrar_heroes_genero,
     utn_mostrar_heroes_poder_superior_promedio,
+    utn_mostrar_heroes_mas_debiles,
     utn_ordenar_poder_ascendente,
     utn_ordenar_altura_descendente,
     utn_ordenar_poder_a_eleccion
@@ -34,6 +29,6 @@ from .funciones import (
 
 from .auxiliares import (
     play_sound, limpiar_pantalla, obtener_maximo, obtener_poder_promedio,
-    imprimir_datos_heroes, bubble_sort, selection_short, quick_sort
+    mostrar_datos_heroes, bubble_sort, selection_short, quick_sort
     )
 from .salida_consola import mostrar_menu

@@ -1,82 +1,122 @@
 
 from .auxiliares import (
-    obtener_maximo, imprimir_datos_heroes,
+    obtener_maximo, mostrar_datos_heroes,
     obtener_poder_promedio, 
     bubble_sort, selection_short, quick_sort
     )
 
-def utn_mostrar_heroes_poder_superior_promedio(alturas: list, generos: list, identidades: list, 
-                                                nombres: list, poder: list) -> None:
+def utn_mostrar_heroes_mas_debiles(nombres: list, identidad: list, generos: list, 
+                                    poder: list, alturas: list) -> None:
+    """
+    Función que calcula el poder maximo entre los heroes y
+    muestra los heroes que esten por debajo de ese poder.
+
+    Args:
+        nombres (list): lista de strings
+        identidad (list): lista de strings
+        generos (list): lista de strings
+        poder (list): lista de enteros
+        alturas (list): lista de floats
+    """
+     
+    maximo_poder = obtener_maximo(poder)
+    mitad_maximo_poder = maximo_poder / 2
+    print(f"\nLa mitad del maximo poder entre los heroes es: {mitad_maximo_poder}")
     
+    for indice in range(len(poder)):
+        if poder[indice] < mitad_maximo_poder:
+            mostrar_datos_heroes(indice, nombres, identidad, generos, poder, alturas,
+                                 ["nombre", "poder"])
+
+def utn_mostrar_heroes_poder_superior_promedio(nombres: list, identidad: list, generos: list, 
+                                               poder: list, alturas: list) -> None:
+    """
+    Función que calcula el poder promedio entre los heroes y
+    muestra los heroes que igualan o superan ese poder.
+
+    Args:
+        nombres (list): lista de strings
+        identidad (list): lista de strings
+        generos (list): lista de strings
+        poder (list): lista de enteros
+        alturas (list): lista de floats
+    """
+
+
     poder_promedio = obtener_poder_promedio(poder)
-    print(poder_promedio)
+    print(f"\nEl poder promedio entre los heroes es: {poder_promedio:4.2f}")
 
     for indice in range(len(poder)):
         if poder[indice] >= poder_promedio:
-            print(imprimir_datos_heroes(indice, nombres, identidades, generos, poder, alturas))
+            mostrar_datos_heroes(indice, nombres, identidad, generos, poder, alturas,
+                                 ["nombre", "poder"])
 
 
-def utn_filtrar_heroes_genero(lista_generos: list, lista_identidades: list, 
-                              lista_nombres: list, genero: str, info_heroe: str)-> None:
+def utn_filtrar_heroes_genero(nombres: list, identidad: list, generos: list, poder: list, 
+                              alturas: list, tipo_genero: str, info_heroe: str)-> None:
     """
     Filtra y muestra información de los héroes según el género especificado.
 
     Args:
-        generos (list): lista de strings
-        identidades (list): lista de strings
         nombres (list): lista de strings
-        genero (str):   Género por el cual se desea filtrar. 
-                        Puede ser "Femenino", "Masculino" o "No-Binario".
+        identidad (list): lista de strings
+        generos (list): lista de strings
+        poder (list): lista de enteros
+        alturas (list): lista de floats
+        tipo_genero (str):   Género por el cual se desea filtrar. 
+                             Puede ser "Femenino", "Masculino" o "No-Binario".
         info_heroe (str): Especifica qué información del héroe se desea mostrar.
                           - "nombre": Muestra solo el nombre del héroe.
                           - "identidad": Muestra solo la identidad del héroe.
                           - "ambos": Muestra el nombre y la identidad del héroe.
     """
 
-    for indice in range(len(lista_generos)):
+    for indice in range(len(generos)):
         
-        if lista_generos[indice] == genero:
+        if generos[indice] == tipo_genero:
             if info_heroe == "nombre":
-                print(f"Nombre: {lista_nombres[indice]}")
+                mostrar_datos_heroes(indice, nombres, identidad, generos, poder, alturas, ["nombre"])
             elif info_heroe == "identidad":
-                print(f"Identidad: {lista_identidades[indice]}")
+                mostrar_datos_heroes(indice, nombres, identidad, generos, poder, alturas, ["identidad"])
             elif info_heroe == "ambos":
-                print(f"Nombre: {lista_nombres[indice]}, Identidad: {lista_identidades[indice]}")
+                mostrar_datos_heroes(indice, nombres, identidad, generos, poder, alturas,
+                                 ["nombre", "identidad"])
                       
 
-def utn_mostrar_heroes_mas_fuertes(alturas: list, generos: list, identidades: list, 
-                                   nombres: list, poder: list)-> None:
+def utn_mostrar_heroes_mas_fuertes(nombres: list, identidad: list, generos: list, 
+                                   poder: list, alturas: list) -> None:
     """
     Función que recibe varias listas con información de heroes y muestra 
     los datos completos del o los héroe que tienen mayor poder. 
 
     Args:
-        alturas (list): lista de float
-        generos (list): _lista de strings
-        identidades (list): lista de strings
         nombres (list): lista de strings
-        poder (list): lista de int
+        identidad (list): lista de strings
+        generos (list): lista de strings
+        poder (list): lista de enteros
+        alturas (list): lista de floats
     """
     mayor_poder = obtener_maximo(poder)
 
     for indice in range(len(poder)):
         
         if poder[indice] == mayor_poder:
-            print(imprimir_datos_heroes(indice, nombres, identidades, generos, poder, alturas))
+            mostrar_datos_heroes(indice, nombres, identidad, generos, poder, alturas,
+                                 ["nombre", "identidad", "genero", "poder", "altura"])
 
 
-def utn_mostrar_heroe_mayor_altura(alturas: list, generos: list, identidades: list,
-                                    nombres: list, poder: list)-> None:
+def utn_mostrar_heroe_mayor_altura(nombres: list, identidad: list, generos: list, 
+                                   poder: list, alturas: list) -> None:
     """
-    función recibe varias listas que contienen información de héroes y muestra 
-    los datos completos del héroe que tiene la mayor altura.
+    Función que recibe varias listas que contienen información de héroes y 
+    muestra los datos completos del héroe que tiene la mayor altura.
 
     Args:
-        alturas (list): lista de float
-        generos (list): _lista de strings
-        identidades (list): lista de strings
         nombres (list): lista de strings
-        poder (list): lista de int
+        identidad (list): lista de strings
+        generos (list): lista de strings
+        poder (list): lista de enteros
+        alturas (list): lista de floats
     """
     
     mayor_altura = obtener_maximo(alturas)
@@ -84,29 +124,44 @@ def utn_mostrar_heroe_mayor_altura(alturas: list, generos: list, identidades: li
     for indice in range(len(alturas)):
         
         if alturas[indice] == mayor_altura:
-            print(imprimir_datos_heroes(indice, nombres, identidades, generos, poder, alturas))
+            mostrar_datos_heroes(indice, nombres, identidad, generos, poder, alturas,
+                                 ["nombre", "identidad", "genero", "poder", "altura"])
 
 
-def utn_mostrar_identidades_heroes(identidades: list)->None:
+def utn_mostrar_identidades_heroes(nombres: list, identidad: list, generos: list, 
+                                   poder: list, alturas: list) -> None:
     """
-    Esta funcion recibe una lista y muestra las identidades de los heroes.
+    Función que recibe varias lista con información de los heroes 
+    y muestra unicamente la identidad de los heroes.
 
     Args:
-        identidades (list): Lista de strings
+        nombres (list): lista de strings
+        identidad (list): lista de strings
+        generos (list): lista de strings
+        poder (list): lista de enteros
+        alturas (list): lista de floats
     """
-    for id in identidades:
-        print(id)
+    for indice in range(len(identidad)):
+        mostrar_datos_heroes(indice, nombres, identidad, generos, poder, alturas,
+                                 ["identidad"])
 
 
-def utn_mostrar_nombres_heroes(nombres: list) -> None:
+def utn_mostrar_nombres_heroes(nombres: list, identidad: list, generos: list, 
+                               poder: list, alturas: list) -> None:
     """
-    Esta funcion recibe una lista y muestra los nombres de los heroes.
+    Función que recibe varias lista con información de los heroes 
+    y muestra unicamente los nombres de los heroes.
 
     Args:
-        nombres (list): Lista de strings
+        nombres (list): lista de strings
+        identidad (list): lista de strings
+        generos (list): lista de strings
+        poder (list): lista de enteros
+        alturas (list): lista de floats
     """
-    for nombre in nombres:
-        print(nombre)
+    for indice in range(len(nombres)):
+        mostrar_datos_heroes(indice, nombres, identidad, generos, poder, alturas,
+                                 ["nombre"])
 
            
 
@@ -115,20 +170,20 @@ def utn_ordenar_poder_ascendente(lista_nombres, lista_identidades, lista_generos
     selection_short(lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas, True)
     
     for indice in range(len(lista_poder)):
-        print(imprimir_datos_heroes(indice, lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas))
+        mostrar_datos_heroes(indice, lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas)
 
 def utn_ordenar_altura_descendente(lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas) ->None:
     
     bubble_sort(lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas, False)
     
     for indice in range(len(lista_alturas)):
-        print(imprimir_datos_heroes(indice, lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas))
+        mostrar_datos_heroes(indice, lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas)
 
 def utn_ordenar_poder_a_eleccion(lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas) ->None:
 
     quick_sort(lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas)
 
     for indice in range(len(lista_poder)):
-        imprimir_datos_heroes(indice, lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas)
+        mostrar_datos_heroes(indice, lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas)
     
 

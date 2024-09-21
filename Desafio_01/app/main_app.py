@@ -5,6 +5,7 @@ from funciones import (
     utn_mostrar_heroes_mas_fuertes,
     utn_filtrar_heroes_genero,
     utn_mostrar_heroes_poder_superior_promedio,
+    utn_mostrar_heroes_mas_debiles,
     utn_ordenar_poder_ascendente,
     utn_ordenar_altura_descendente,
     utn_ordenar_poder_a_eleccion
@@ -22,23 +23,23 @@ def utn_heroes_app(lista_nombres, lista_identidades, lista_generos, lista_poder,
         
         match opcion:
             case 1:
-                utn_mostrar_nombres_heroes(lista_nombres)
+                utn_mostrar_nombres_heroes(lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas)
             case 2:
-                utn_mostrar_identidades_heroes(lista_identidades)
+                utn_mostrar_identidades_heroes(lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas)
             case 3:
-                utn_mostrar_heroe_mayor_altura(lista_alturas, lista_generos, lista_identidades, lista_nombres, lista_poder)
+                utn_mostrar_heroe_mayor_altura(lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas)
             case 4:
-                utn_mostrar_heroes_mas_fuertes(lista_alturas, lista_generos, lista_identidades, lista_nombres, lista_poder)
+                utn_mostrar_heroes_mas_fuertes(lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas)
             case 5:
-                utn_filtrar_heroes_genero(lista_generos, lista_identidades, lista_nombres,"Femenino", "nombre")
+                utn_filtrar_heroes_genero(lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas,"Femenino", "nombre")
             case 6:
-                utn_filtrar_heroes_genero(lista_generos, lista_identidades, lista_nombres,"Masculino", "identidad")
+                utn_filtrar_heroes_genero(lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas,"Masculino", "identidad")
             case 7:
-                utn_filtrar_heroes_genero(lista_generos, lista_identidades, lista_nombres,"No-Binario", "ambos")
+                utn_filtrar_heroes_genero(lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas,"No-Binario", "ambos")
             case 8:
-                utn_mostrar_heroes_poder_superior_promedio(lista_alturas, lista_generos, lista_identidades, lista_nombres, lista_poder)
+                utn_mostrar_heroes_poder_superior_promedio(lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas)
             case 9:
-                pass
+                utn_mostrar_heroes_mas_debiles(lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas)
             case 10: 
                 utn_ordenar_poder_ascendente(lista_nombres, lista_identidades, lista_generos, lista_poder, lista_alturas)
             case 11:
