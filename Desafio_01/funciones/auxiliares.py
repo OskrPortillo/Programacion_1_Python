@@ -31,10 +31,30 @@ def play_sound():
     plays the sound.
     """
     mixer.init()
-    mixer.music.load('./assets/snd/select.mp3')
+    mixer.music.load('./Desafio_01/assets/snd/select.mp3')
     mixer.music.set_volume(0.4)
     mixer.music.play()
     time.sleep(0.4)
+
+
+def obtener_poder_promedio(lista_poder: list) -> float:
+    """
+    Función que recibe una lista y calcula el promedio.
+
+    Args:
+        lista_poder (list): lista de enteros
+
+    Returns:
+        float: El promedio de los valores de la lista.
+    """
+
+
+    suma_poder = 0
+    for indice in range(len(lista_poder)):
+        suma_poder += lista_poder[indice]
+
+    promedio = suma_poder / len(lista_poder)
+    return promedio
 
 def obtener_maximo(lista_numeros: list) -> float:
     """
@@ -55,8 +75,102 @@ def obtener_maximo(lista_numeros: list) -> float:
         
     return float(maximo)
 
-def  imprimir_datos_heroes(indice: int, lista_nombres: list, lista_identidades: list, lista_generos: list, lista_poderes: list, lista_alturas: list)-> None:
-    print(f"{lista_nombres[indice]:15} | {lista_identidades[indice]:25} | {lista_generos[indice]:10} \
-          | {lista_alturas[indice]:4} | {lista_poderes[indice]:4}")
+def  imprimir_datos_heroes(indice: int, lista_nombres: list, lista_identidades: list, 
+                           lista_generos: list, lista_poderes: list, lista_alturas: list)-> str:
+    
+    mensaje = f"Nombre: {lista_nombres[indice]:<16} | Identidad: {lista_identidades[indice]:<22} " \
+              f"| Genero: {lista_generos[indice]:<12} | Altura: {lista_alturas[indice]:<12} " \
+              f"| Poder: {lista_poderes[indice]:<12} |"
+    return mensaje
+
+def bubble_sort(lista_nombres: list[str], lista_identidades: list[str],lista_generos: list [str], \
+                lista_poder: list[int], lista_alturas: list[float], orden_ascendente :bool) ->None:
+
+    for indice in range(len(lista_alturas)-1):
+        for sub_indice in range(indice + 1, len(lista_alturas)):
+
+            if orden_ascendente:    
+                if lista_alturas[indice] > lista_alturas[sub_indice]:
+                    lista_alturas[indice], lista_alturas[sub_indice] =\
+                    lista_alturas[sub_indice], lista_alturas[indice]
+
+                    lista_poder[indice], lista_poder[sub_indice] =\
+                    lista_poder[sub_indice], lista_poder[indice]
+
+                    lista_generos[indice], lista_generos[sub_indice] =\
+                    lista_generos[sub_indice], lista_generos[indice]
+
+                    lista_identidades[indice], lista_identidades[sub_indice] =\
+                    lista_identidades[sub_indice], lista_identidades[indice]
+
+                    lista_nombres[indice], lista_nombres[sub_indice] =\
+                    lista_nombres[sub_indice], lista_nombres[indice]
+            else: #descendente
+                    if lista_alturas[indice] < lista_alturas[sub_indice]:
+                        lista_alturas[indice], lista_alturas[sub_indice] =\
+                        lista_alturas[sub_indice], lista_alturas[indice]
+
+                        lista_poder[indice], lista_poder[sub_indice] =\
+                        lista_poder[sub_indice], lista_poder[indice]
+
+                        lista_generos[indice], lista_generos[sub_indice] =\
+                        lista_generos[sub_indice], lista_generos[indice]
+
+                        lista_identidades[indice], lista_identidades[sub_indice] =\
+                        lista_identidades[sub_indice], lista_identidades[indice]
+
+                        lista_nombres[indice], lista_nombres[sub_indice] =\
+                        lista_nombres[sub_indice], lista_nombres[indice]
+                
+def selection_short(lista_nombres: list[str], lista_identidades: list[str],lista_generos: list [str], \
+                lista_poder: list[int], lista_alturas: list[float], orden_ascendente: bool) -> None:
+            
+    for indice in range (len(lista_poder) - 1):
+        indice_minimo_o_maximo = indice
+
+        for sub_indice in range(indice + 1, len(lista_poder)):
+
+            if orden_ascendente:
+                if lista_poder[sub_indice] < lista_poder[indice_minimo_o_maximo]:
+                    indice_minimo_o_maximo = sub_indice
+            
+            else:
+                if lista_poder[sub_indice] > lista_poder[indice_minimo_o_maximo]:
+                    indice_minimo_o_maximo = sub_indice
+        
+        if indice_minimo_o_maximo != indice:
+            lista_poder[indice], lista_poder[indice_minimo_o_maximo] =\
+            lista_poder[indice_minimo_o_maximo], lista_poder[indice]
+
+            lista_alturas[indice], lista_alturas[indice_minimo_o_maximo] =\
+            lista_alturas[indice_minimo_o_maximo], lista_alturas[indice]
+
+            lista_generos[indice], lista_generos[indice_minimo_o_maximo] =\
+            lista_generos[indice_minimo_o_maximo], lista_generos[indice]
+
+            lista_identidades[indice], lista_identidades[indice_minimo_o_maximo] =\
+            lista_identidades[indice_minimo_o_maximo], lista_identidades[indice]
+
+            lista_nombres[indice], lista_nombres[indice_minimo_o_maximo] =\
+            lista_nombres[indice_minimo_o_maximo], lista_nombres[indice]
+
+
+def quick_sort(lista_nombres: list[str], lista_identidades: list[str],lista_generos: list [str], \
+                lista_poder: list[int], lista_alturas: list[float]) -> None:
+    
+    if len(lista_poder) < 2:
+        return lista_poder
+    
+    pivot = lista_poder.pop()
+    numeros_menores = []
+    numeros_mayores = []
+
+    for numero in lista_poder:
+        if numero <= pivot:
+            numeros_menores.append(numero)
+        else:
+            numeros_mayores.append(numero)
+
+    return quick_sort(numeros_menores) + pivot + quick_sort (numeros_mayores)
 
 
